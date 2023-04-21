@@ -51,7 +51,7 @@ from datetime import datetime, timedelta, timezone
 
 if sys.version_info[:2] < (3, 7):
 	# 3rd party
-	from backports.datetime_fromisoformat import MonkeyPatch  # type: ignore[import]  # nodep
+	from backports.datetime_fromisoformat import MonkeyPatch  # nodep
 	MonkeyPatch.patch_fromisoformat()
 
 # def format_datetime(dt: datetime) -> str:
@@ -80,7 +80,7 @@ def from_iso_zulu(the_datetime: Union[str, datetime, None]) -> Optional[datetime
 	elif isinstance(the_datetime, datetime):
 		return the_datetime
 	else:
-		return datetime.fromisoformat(the_datetime.replace('Z', "+00:00"))  # type: ignore[attr-defined]
+		return datetime.fromisoformat(the_datetime.replace('Z', "+00:00"))
 
 
 class RateType(StrEnum):
