@@ -36,7 +36,7 @@ jobs:
           - {python-version: "3.11", testenvs: "py311-dev,build", experimental: True}
           - {python-version: "pypy-3.7", testenvs: "pypy37,build", experimental: False}
           - {python-version: "pypy-3.8", testenvs: "pypy38,build", experimental: False}
-          - {python-version: "pypy-3.9", testenvs: "pypy39,build", experimental: True}
+          - {python-version: "pypy-3.9", testenvs: "pypy39", experimental: True}
 
     steps:
       - name: Checkout 🛎️
@@ -159,11 +159,11 @@ jobs:
 
       - name: Upload distribution to PyPI 🚀
         if: startsWith(github.ref, 'refs/tags/')
-        uses: pypa/gh-action-pypi-publish@v1.4.2
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
-          skip_existing: true
+          skip-existing: true
 
       - name: Close milestone 🚪
         if: startsWith(github.ref, 'refs/tags/')
