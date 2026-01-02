@@ -102,7 +102,9 @@ def test_get_product_info(api: OctoAPI, datadir):  # noqa: MAN001
 					"electricity_dual_rate": {"electricity_day": 2436, "electricity_night": 1764},
 					"dual_fuel_single_rate": {"electricity_standard": 2900, "gas_standard": 12000},
 					"dual_fuel_dual_rate": {
-							"electricity_day": 2436, "electricity_night": 1764, "gas_standard": 12000
+							"electricity_day": 2436,
+							"electricity_night": 1764,
+							"gas_standard": 12000,
 							}
 					},
 			brand="OCTOPUS_ENERGY",

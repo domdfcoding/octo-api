@@ -91,14 +91,14 @@ def api(httpserver: HTTPServer) -> octo_api.api.OctoAPI:
 			"/v1/products/",
 			is_variable=False,
 			is_prepay=True,
-			is_business=False
+			is_business=False,
 			)
 
 	respond_from_file(responses / "products_VAR-17-01-11.json", "/v1/products/VAR-17-01-11")
 	respond_from_file(
 			responses / "standard_unit_rates.json",
 			"/v1/products/VAR-17-01-11/electricity-tariffs/E-1R-VAR-17-01-11-A/standard-unit-rates",
-			page_size=100
+			page_size=100,
 			)
 
 	unit_rates_endpount = "/v1/products/AGILE-18-02-21/electricity-tariffs/E-1R-AGILE-18-02-21-C/standard-unit-rates"
@@ -107,7 +107,9 @@ def api(httpserver: HTTPServer) -> octo_api.api.OctoAPI:
 	respond_from_file(responses / "agile_unit_rates_page2.json", unit_rates_endpount, page=2, page_size=100)
 
 	httpserver.expect_request("/v1/electricity-meter-points/2000024512368/").respond_with_json({
-			"gsp": "_H", "mpan": "2000024512368", "profile_class": 1
+			"gsp": "_H",
+			"mpan": "2000024512368",
+			"profile_class": 1,
 			})
 
 	@respond("/v1/industry/grid-supply-points/", postcode="SW1A 1AA")
@@ -131,7 +133,7 @@ def api(httpserver: HTTPServer) -> octo_api.api.OctoAPI:
 			consumption_endpoint,
 			period_from="2020-08-03T00:00:00+01:00",
 			period_to="2020-09-03T00:00:00+01:00",
-			page_size=100
+			page_size=100,
 			)
 	respond_from_file(
 			responses / "consumption_august.json",
@@ -139,7 +141,7 @@ def api(httpserver: HTTPServer) -> octo_api.api.OctoAPI:
 			period_from="2020-08-03T00:00:00+01:00",
 			period_to="2020-09-03T00:00:00+01:00",
 			page=1,
-			page_size=100
+			page_size=100,
 			)
 
 	respond_from_file(

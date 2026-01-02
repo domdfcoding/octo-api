@@ -53,7 +53,10 @@ def test_get_consumption(api: OctoAPI):
 
 	with pytest.raises(ValueError, match="'page_size' may not be greater than 25,000"):
 		api.get_consumption(
-				mpan="2000024512368", serial_number="-------------", fuel="electricity", page_size=10000000
+				mpan="2000024512368",
+				serial_number="-------------",
+				fuel="electricity",
+				page_size=10000000,
 				)
 
 
@@ -109,7 +112,10 @@ def test_get_consumption_for_period(api: OctoAPI):
 
 def test_get_consumption_reverse(api: OctoAPI):
 	consumption = api.get_consumption(
-			mpan="2000024512368", serial_number="-------------", fuel="electricity", reverse=True
+			mpan="2000024512368",
+			serial_number="-------------",
+			fuel="electricity",
+			reverse=True,
 			)
 
 	assert len(consumption) == 2496
@@ -132,7 +138,10 @@ def test_get_consumption_reverse(api: OctoAPI):
 
 def test_get_consumption_grouping(api: OctoAPI):
 	consumption = api.get_consumption(
-			mpan="2000024512368", serial_number="-------------", fuel="electricity", group_by="week"
+			mpan="2000024512368",
+			serial_number="-------------",
+			fuel="electricity",
+			group_by="week",
 			)
 
 	assert len(consumption) == 8
