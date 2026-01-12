@@ -103,7 +103,7 @@ octo-api
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/octo-api
-	:target: https://pypi.org/project/octo-api/
+	:target: https://pypistats.org/packages/octo-api
 	:alt: PyPI - Downloads
 
 .. end shields
