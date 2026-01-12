@@ -313,7 +313,7 @@ class RegionalQuotes(Dict[str, Dict[str, Dict[str, Quote]]]):
 
 	def __str__(self) -> str:
 		fuel_types = _sortedset(
-				chain.from_iterable(kk.keys() for kk in chain.from_iterable(k.values() for k in self.values()))
+				chain.from_iterable(kk.keys() for kk in chain.from_iterable(k.values() for k in self.values())),
 				)
 		return f"{self.__class__.__name__}([{', '.join(fuel_types)}])"
 

@@ -33,7 +33,7 @@ def test_get_products(api: OctoAPI):
 					"href": "https://api.octopus.energy/v1/products/1201/",
 					"rel": "self",
 					"method": "GET",
-					}]
+					}],
 			)
 
 	assert api.get_products(is_green=True)[0] == Product(
@@ -56,7 +56,7 @@ def test_get_products(api: OctoAPI):
 					"href": "https://api.octopus.energy/v1/products/AGILE-18-02-21/",
 					"rel": "self",
 					"method": "GET",
-					}]
+					}],
 			)
 
 	assert not api.get_products(is_tracker=True)
@@ -64,16 +64,15 @@ def test_get_products(api: OctoAPI):
 
 
 def test_get_product_info(api: OctoAPI, datadir):  # noqa: MAN001
-	dual_register_electricity_tariffs = json.loads(
-			(datadir / "get_product_info_dual_register_tariffs.json").read_text()
-			)
-	single_register_gas_tariffs = json.loads(
-			(datadir / "get_product_info_single_register_gas_tariffs.json").read_text()
-			)
+	tarrifs_file = datadir / "get_product_info_dual_register_tariffs.json"
+	dual_register_electricity_tariffs = json.loads(tarrifs_file.read_text())
+
+	tarrifs_file = datadir / "get_product_info_single_register_gas_tariffs.json"
+	single_register_gas_tariffs = json.loads(tarrifs_file.read_text())
+
 	sample_quotes = json.loads((datadir / "get_product_info_sample_quotes.json").read_text())
-	single_register_electricity_tariffs = json.loads(
-			(datadir / "single_register_electricity_tariffs.json").read_text()
-			)
+	tarrifs_file = datadir / "single_register_electricity_tariffs.json"
+	single_register_electricity_tariffs = json.loads(tarrifs_file.read_text())
 
 	product = DetailedProduct(
 			code="VAR-17-01-11",
@@ -105,22 +104,21 @@ def test_get_product_info(api: OctoAPI, datadir):  # noqa: MAN001
 							"electricity_day": 2436,
 							"electricity_night": 1764,
 							"gas_standard": 12000,
-							}
+							},
 					},
 			brand="OCTOPUS_ENERGY",
 			links=[{
 					"href": "https://api.octopus.energy/v1/products/VAR-17-01-11/",
 					"rel": "self",
 					"method": "GET",
-					}]
+					}],
 			)
 	assert api.get_product_info("VAR-17-01-11") == product
 
 
 def test_parse_tariffs(advanced_file_regression: AdvancedFileRegressionFixture, datadir):  # noqa: MAN001
-	single_register_electricity_tariffs = json.loads(
-			(datadir / "single_register_electricity_tariffs.json").read_text()
-			)
+	tarrifs_file = datadir / "single_register_electricity_tariffs.json"
+	single_register_electricity_tariffs = json.loads(tarrifs_file.read_text())
 
 	assert isinstance(_parse_tariffs(single_register_electricity_tariffs), RegionalTariffs)
 	assert str(_parse_tariffs(single_register_electricity_tariffs)) == "RegionalTariffs(['direct_debit_monthly'])"

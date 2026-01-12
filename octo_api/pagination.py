@@ -141,7 +141,7 @@ class PaginatedResponse(Iterable[_T]):
 		response: OctoResponse = self.query_url.get(  # type: ignore[assignment]
 			page=self._next_page,
 			**self.query_params,
-			)
+		)
 
 		self._results.extend(response["results"])
 		self._parse_pages(response)

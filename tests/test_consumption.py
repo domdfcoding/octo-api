@@ -66,7 +66,7 @@ def test_get_consumption(api: OctoAPI):
 				("consumption", 1.234),
 				("interval_start", "2020-09-29T14:30:00+01:00"),
 				("interval_end", "2020-09-28T15:00:00+01:00"),
-				]
+				],
 		)
 def test_consumption_equality(key: str, value: Any):
 	consumption = Consumption(
