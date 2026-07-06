@@ -124,7 +124,6 @@ class OctoAPI:
 				term=None,
 				direction='IMPORT',
 			)
-
 		"""
 
 		parameters: Dict[str, Any] = {}
