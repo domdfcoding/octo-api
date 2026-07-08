@@ -163,7 +163,7 @@ class OctoAPI:
 
 		.. code-block:: python
 
-			>>> api.get_product_info(product_code='VAR-17-01-11')
+			>>> api.get_product_info(product_code="VAR-17-01-11")
 			octo_api.products.DetailedProduct(
 				available_from='2017-01-11T10:00:00+00:00',
 				available_to='2018-02-15T00:00:00+00:00',
